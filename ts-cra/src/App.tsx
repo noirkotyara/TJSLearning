@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
+import { Func } from './components/hoc';
 const _ = require('lodash');
 
 type ErrorsType = {
@@ -40,6 +41,7 @@ let App = () => {
   }
 
   return (<div>
+    <div> <Func title='function' name='cat'  /> </div>
     This is an example Formik
     <div>
       <Formik
