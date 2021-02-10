@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
+import {  Field, Form, Formik, FormikHelpers } from 'formik';
 import { Func } from './components/hoc';
+import { JsLearning } from './components/JsLearning';
 const _ = require('lodash');
 
 type ErrorsType = {
@@ -15,6 +15,8 @@ type FormType = {
 }
 
 let App = () => {
+
+
 
   const onSubmit = (values: FormType, { setSubmitting }: FormikHelpers<FormType>) => {
     debugger
@@ -41,6 +43,10 @@ let App = () => {
   }
 
   return (<div>
+
+    <div>
+      <JsLearning/>
+    </div>
     <div> <Func title='function' name='cat'  /> </div>
     This is an example Formik
     <div>
