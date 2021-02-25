@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
-import {  Field, Form, Formik, FormikHelpers } from 'formik';
+import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { Func } from './components/hoc';
 import { JsLearning } from './components/JsLearning';
+import { MessageVisualization } from './components/contextL';
+import { MyForm } from './components/Input+Hook';
 const _ = require('lodash');
 
 type ErrorsType = {
@@ -20,13 +22,15 @@ let App = () => {
 
   const onSubmit = (values: FormType, { setSubmitting }: FormikHelpers<FormType>) => {
     debugger
-    const valuesConverted = {...values, 
-    friend: values.friend === 'null' 
-    ? null 
-    : values.friend === 'true' 
-    ? true 
-    : values.friend === 'false' 
-    && false}   
+    const valuesConverted = {
+      ...values,
+      friend: values.friend === 'null'
+        ? null
+        : values.friend === 'true'
+          ? true
+          : values.friend === 'false'
+          && false
+    }
     console.log(valuesConverted)
     setSubmitting(false);
   }
@@ -43,11 +47,17 @@ let App = () => {
   }
 
   return (<div>
-
+    <hr/>
+    <MyForm/>
+    <hr />
+    <MessageVisualization />
+    <hr />
     <div>
-      <JsLearning/>
+      <JsLearning />
     </div>
-    <div> <Func title='function' name='cat'  /> </div>
+    <div>
+      <Func title='function' name='cat' /> </div>
+
     This is an example Formik
     <div>
       <Formik
