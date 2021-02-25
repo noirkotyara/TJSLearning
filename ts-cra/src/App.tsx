@@ -1,86 +1,25 @@
 import React from 'react';
-import './App.css';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
-import { Func } from './components/hoc';
-import { JsLearning } from './components/JsLearning';
-import { MessageVisualization } from './components/contextL';
-import { MyForm } from './components/Input+Hook';
+import './App.scss';
+import NavbarComp from './components/Navbar';
+import { Route } from 'react-router-dom'
+import Home from './pages/Home';
+import About from './pages/About';
+import { AlertState } from './context/alert/AlertState';
+import Switch from 'react-bootstrap/esm/Switch';
 const _ = require('lodash');
 
-type ErrorsType = {
-  email?: string
-}
-
-type FormType = {
-  term: string
-  friend: 'null' | 'true' | 'false'
-}
-
 let App = () => {
-
-
-
-  const onSubmit = (values: FormType, { setSubmitting }: FormikHelpers<FormType>) => {
-    debugger
-    const valuesConverted = {
-      ...values,
-      friend: values.friend === 'null'
-        ? null
-        : values.friend === 'true'
-          ? true
-          : values.friend === 'false'
-          && false
-    }
-    console.log(valuesConverted)
-    setSubmitting(false);
-  }
-  const validate = (values: ErrorsType) => {
-    const errors: ErrorsType = {};
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-    ) {
-      errors.email = 'Invalid email address';
-    }
-    return errors;
-  }
-
-  return (<div>
-    <hr/>
-    <MyForm/>
-    <hr />
-    <MessageVisualization />
-    <hr />
-    <div>
-      <JsLearning />
-    </div>
-    <div>
-      <Func title='function' name='cat' /> </div>
-
-    This is an example Formik
-    <div>
-      <Formik
-        initialValues={{ term: '', friend: 'null' }}
-        // validate={validate}
-        onSubmit={onSubmit}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <Field type="text" name="term" />
-            {/* <ErrorMessage name="email" component="div" /> */}
-            <Field name="friend" as="select">
-              <option value="null">All</option>
-              <option value="true">Only followed</option>
-              <option value="false">Only unfollowed</option>
-            </Field>
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-           </button>
-          </Form>
-        )}
-      </Formik>
-    </div>
+  return (<div className='container'>
+    <AlertState>
+      <NavbarComp />
+      <div className='content'>
+        <Switch>
+         <Route path={'/about'} component={() => <About />} /> 
+         <Route exact path={'/'} component={() => <Home />} />
+        </Switch>
+        
+      </div>
+    </AlertState>
   </div>)
 }
 

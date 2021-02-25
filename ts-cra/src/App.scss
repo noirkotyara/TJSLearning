@@ -1,0 +1,23 @@
+#basic-navbar-nav{
+  color: aquamarine;
+}
+.container{
+  margin: 20px auto;
+  .content{
+    padding: 20px;
+  }
+}
+
+.list-group{
+  margin: 10px;
+  
+}
+.list-group-item{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+small{
+  margin: 1rem;
+}
