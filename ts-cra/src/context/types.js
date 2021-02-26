@@ -1,1 +1,5 @@
 export const ALERT_TOGGLE = 'ALLERT-CHANGING'
+export const ISLOADING = 'ISLOADING'
+export const FETCH_NOTES = 'FETCH-NOTES'
+export const REMOVE_NOTE = 'REMOVE-NOTE'
+export const ADD_NOTE = 'ADD-NOTE'
